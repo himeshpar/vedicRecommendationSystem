@@ -1,0 +1,64 @@
+const categorySelect = document.getElementById('category-select')
+const bookList = document.getElementById('books-list')
+
+queryFetch(`
+  query {
+    categories {
+      tags
+    }
+  }
+`).then(data => {
+  data.data.categories.forEach(category => {
+    const option = document.createElement('option')
+    option.value = category.tags
+    option.innerText = category.tags
+    categorySelect.append(option)
+
+  })
+})
+
+categorySelect.addEventListener('change', async e => {
+  const categoryCode = e.target.value
+  const books = await getCategoryBooks
+  (categoryCode)
+  console.log(books)
+  bookList.innerHTML = ''
+  books.forEach(book => {
+    console.log(book.id);
+    var i;
+    for (i = 0; i < book.id.length; i++){
+      const element = document.createElement('div')
+      element.innerText = book.id[i].title
+      bookList.append(element)
+    }
+    
+  })
+})
+function getCategoryBooks(categoryCode) {
+  return queryFetch(` 
+    query getBooks($tags :String) {
+      categories (where: {tags: $tags}) {
+        id: 
+          books{title} 
+          
+        }
+        
+      }
+    
+  `, { tags: categoryCode }).then(data => {
+    return data.data.categories
+
+  })
+
+}
+
+function queryFetch(query, variables){
+  return fetch('http://localhost:1337/graphql', {
+    method: 'POST',
+    headers: {"Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: query,
+      variables: variables 
+    })
+  }).then(res => res.json())
+}
