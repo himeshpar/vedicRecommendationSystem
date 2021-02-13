@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+    <script src="filter.js"></script>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+    <link rel="stylesheet" href="assets/css/instant-search.css">
 </head>
 
 <body id="page-top">
@@ -19,67 +22,96 @@
                     <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link active js-scroll-trigger" href="#about">About</a></li>
                     <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="#download">download</a></li>
                     <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="#contact">contact</a></li>
+                    <li id="searchUsers" class="instant-search nav-item nav-link js-scroll-trigger">
+                        <div class="instant-search__input-container">
+                            <input id="searchBook" class="instant-search__input" type="text" spellcheck="false" placeholder="Search Books" onkeyup="searchBook()">
+                            <i class="material-icons instant-search__icon">search</i>
+                        </div>
+                        <div class="sort-dropdown" id="book-title-dropdown">
+
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
     <header class="masthead" style="background-image:url('assets/img/intro-bg.jpg');">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row" style="height: 415px;">
+        <div class="intro-body" style="height: 990px;margin: 32px;padding: 0px;width: 1189px;">
+            <div class="container" style="height: 162px;padding: 0px;">
+                <div class="row">
                     <div class="col-lg-8 mx-auto">
-                        <h1 class="brand-heading" style="font-size: 40px;">Vedic recommendation system</h1>
-                        <p class="intro-text">Receive a personalized set of books based on your preferences</p><a class="btn btn-link btn-circle" role="button" href="#about"><i class="fa fa-angle-double-down animated"></i></a>
+                        <h1 class="brand-heading" style="font-size: 37px;">Vedic recommendation system</h1>
+                        <h1 class="brand-heading" style="font-size: 37px;height: 62px;">1. Select your preference</h1>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
-    <section id="about" class="content-section text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <h2>About VRS</h2>
-                    <p>What are Vedic Books</p>
-                    <p>Why read them</p>
-                    <p>What benefits they have</p>
+            <div class="container" style="height: 169px;">
+                <div class="row">
+                    <div class="col" style="height: 80px;">
+                        <div class="custom-control text-center bg-secondary custom-switch" style="height: 78px;border-radius: 10px;background: url(&quot;assets/img/dark-1015825_960_720.webp&quot;) top / cover;"><input class="custom-control-input" type="checkbox" id="formCheck-1"><label class="custom-control-label" for="formCheck-1" style="height: 21px;margin: 25px;color: var(--light);font-size: 18px;font-weight: 600;">Biography</label></div>
+                    </div>
+                    <div class="col">
+                        <div class="custom-control text-center bg-dark custom-switch" style="height: 78px;border-radius: 10px;background: url(&quot;assets/img/tasty-fresh-appetizing-italian-food-ingredients-dark-background-ready-cook-home-italian-healthy-food-cooking-concept-toning_1220-1820.jpg&quot;) center / cover;"><input class="custom-control-input" type="checkbox" id="formCheck-2"><label class="custom-control-label" for="formCheck-2" style="height: 21px;margin: 25px;font-weight: 600;font-size: 18px;">Cooking</label></div>
+                    </div>
+                    <div class="col">
+                        <div class="custom-control text-center bg-dark custom-switch" style="height: 78px;border-radius: 10px;background: url(&quot;assets/img/file7an3cmza5frvd5jcjgh-1107165961-1590071021.jpg&quot;) center / cover;"><input class="custom-control-input" type="checkbox" id="formCheck-3"><label class="custom-control-label" for="formCheck-3" style="height: 21px;margin: 25px;font-weight: 600;color: var(--light);font-size: 18px;">Happiness</label></div>
+                    </div>
+                    <div class="col">
+                        <div class="custom-control text-center bg-dark custom-switch" style="height: 78px;border-radius: 10px;background: url(&quot;assets/img/1800x860_magazine-lifestyle.jpg&quot;);background-size: cover;"><input class="custom-control-input" type="checkbox" id="formCheck-4"><label class="custom-control-label" for="formCheck-4" style="height: 21px;margin: 25px;font-weight: 600;font-size: 18px;">Lifestyle</label></div>
+                    </div>
+                    <div class="col" style="height: 81px;">
+                        <div class="custom-control text-center bg-dark custom-switch" style="height: 78px;border-radius: 10px;background: url(&quot;assets/img/wellbeing.jpg&quot;) top / cover, linear-gradient(black 0%, white 100%);"><input class="custom-control-input" type="checkbox" id="formCheck-5"><label class="custom-control-label" for="formCheck-5" style="height: 21px;margin: 25px;font-weight: 600;font-size: 18px;">Well-being</label></div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section id="download" class="download-section content-section text-center" style="background-image:url('assets/img/downloads-bg.jpg');">
-        <div class="container">
-            <div class="col-lg-8 mx-auto">
-                <h1 style="font-size: 32px;">ready to find what books suit you?</h1>
-                <p>Start by clicking the button below to receive your personalized set of book</p><a class="btn btn-primary btn-lg btn-default" role="button" href="filterpage.html">Recommend</a>
-            </div>
-        </div>
-    </section>
-    <section id="contact" class="content-section text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <h2>Contact us</h2>
-                    <p>Feel free to leave us a comment on the<a href="#">&nbsp;Grayscale template overview page</a>&nbsp;to give some feedback about this theme!</p>
-                    <ul class="list-inline banner-social-buttons">
-                        <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i class="fa fa-google-plus fa-fw"></i><span class="network-name">&nbsp; Google+</span></button></li>
-                        <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i class="fa fa-twitter fa-fw"></i><span class="network-name">&nbsp;Twitter</span></button></li>
-                        <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i class="fa fa-github fa-fw"></i><span class="network-name">&nbsp;github</span></button></li>
-                    </ul>
+            <div class="container" style="height: 75px;">
+                <div class="row">
+                    <div class="col">
+                        <div class="custom-control text-center bg-dark custom-switch" style="height: 78px;border-radius: 10px;background: url(&quot;assets/img/large_NnG2HaVoO9kxGiddcxBBrZb5YMM4AaUBxN7DUFImu7w.jpg&quot;);background-size: contain;font-size: 18px;"><input class="custom-control-input" type="checkbox" id="formCheck-6"><label class="custom-control-label" for="formCheck-6" style="height: 21px;margin: 25px;font-weight: 600;">Philosophy</label></div>
+                    </div>
+                    <div class="col">
+                        <div class="custom-control text-center bg-dark custom-switch" style="height: 78px;border-radius: 10px;background: url(&quot;assets/img/light-arrow-up-circuit-dark-blue-background-with-copy-space-copy-illustration-business-growth-concept_115968-77.jpg&quot;) center / cover;"><input class="custom-control-input" type="checkbox" id="formCheck-7"><label class="custom-control-label" for="formCheck-7" style="height: 21px;margin: 25px;font-weight: 600;font-size: 16px;text-align: left;">Personal development</label></div>
+                    </div>
+                    <div class="col">
+                        <div class="custom-control text-center bg-dark custom-switch" style="height: 78px;border-radius: 10px;background: url(&quot;assets/img/file-20171115-19836-uy2yzs.jpg&quot;);background-size: cover;"><input class="custom-control-input" type="checkbox" id="formCheck-8"><label class="custom-control-label" for="formCheck-8" style="height: 21px;margin: 25px;font-weight: 600;font-size: 17px;">Spirituality</label></div>
+                    </div>
+                    <div class="col">
+                        <div class="custom-control text-center bg-dark custom-switch" style="background: url(&quot;assets/img/what-every-teacher-should-know-about-the-science-of-learning.jpg&quot;) top / cover;height: 78px;border-radius: 10px;"><input class="custom-control-input" type="checkbox" id="formCheck-9"><label class="custom-control-label" for="formCheck-9" style="height: 21px;margin: 25px;font-weight: 600;font-size: 17px;">Science</label></div>
+                    </div>
+                    <div class="col">
+                        <div class="custom-control text-center bg-dark custom-switch" style="height: 78px;border-radius: 10px;background: url(&quot;assets/img/download.jpg&quot;) top / cover;"><input class="custom-control-input" type="checkbox" id="formCheck-10"><label class="custom-control-label" for="formCheck-10" style="height: 21px;margin: 25px;font-weight: 600;font-size: 17px;">Yoga</label></div>
+                    </div>
                 </div>
+                <button onclick="recommendBook()" style="margin: 69px;padding: 11px;">Recommend me!</button>
             </div>
-        </div>
-    </section>
-    <div class="map-clean"></div>
-    <footer>
-        <div class="container text-center">
-            <p>Copyright ©&nbsp;Brand 2021</p>
-        </div>
-    </footer>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="assets/js/grayscale.js"></script>
-</body>
-
-</html>
+        </header>
+        <section id="about" class="content-section text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2>Here is your personalized list:</h2>
+                    </div>
+                </div>
+                <div id="books-list"></div>
+            </div>
+        </section>
+        <footer>
+            <div class="container text-center">
+                <p>Himesh Parmar - 1804639</p>
+            </div>
+        </footer>
+        
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="assets/js/grayscale.js"></script>
+        <script src="assets/js/instant-search.js"></script>
+        <script src="assets/js/script.js"></script>
+        <script>
+            window.addEventListener('load', (event) => {
+                onLoadFunc();
+            });
+        </script>
+    </body>
+    
+    </html>

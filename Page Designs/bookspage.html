@@ -1,28 +1,103 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Document</title>
+    <title>Bookpage</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/common.css" />
 </head>
 
-<body><h1>Here are your recommended results </h1>
-    <script src="script.js" defer=""></script>
-
-
-    <select id="category-select">
-        <option selected="" hidden="">Select a Category</option>
-    </select>
-    <div id="books-list"></div>
+<body id="page-top">
+    <nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#">Brand</a><button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link active js-scroll-trigger" href="#about">About</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="#download">download</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" href="#contact">contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="container">
+            <div class="intro-book">
+                <div class="book-main book-item">
+                    <div class="book-image">
+                        <img id="bookImage" src="./assets/img/Book.png" />
+                    </div>
+                    <div class="book-description">
+                        <div class="book-title" id="title">In Essence</div>
+                        <div class="book-content" id="description">This book is for seekers. This book invites you to evolve your vision and base 
+                            your happiness on a deeper, more spirtual understanding of realify. (Read More)Tab
+                            Although we've been trying to understand our world since the beginning of time, and philosophers,
+                            theologians, and scientists have tried to interpret the world for us, we still want to know
+                                what we're doing here and whether life has meaning and purpose.
+                            In Essence addresses life's big questions. Responding to the inquiries of the many people
+                            he spoke to, His Divine Grace A.C. Bhaktivedanta Swami Prabhupada answers with logic
+                                and wit, drawing from the ancient reassure house of Vedic wisdom. There are discussions on
+                            yoga, meditation, the mind and karma and questions exploring the self, the universe and the
+                            source of existence. A how-to guide on practicing bhakti-yoga is also included.</div>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <div class="book-state" id="author">
+                        <div>Book by His Divine Grace A.C. Bhaktivedanta Swami Prabhupada</div>
+                    </div>
+                </div>
+            </div>
+            <div class="intro-author">
+                <div class="about-author">About author</div>
+                <div class="author-resume" id="aboutauthor">A.C. Bhaktivedanta Swami Prabhupada Founded the Hare Krishna Movement in 1996 in new York.
+                    In only 11 years he spread the movement all over the world. He wrote more than 80 books 
+                    including Bhagavad-gita As It is, Srimad-Bhagavatam, Sri Caitanya-caritamrta, Sri 
+                    Isopanisad. Prabhupada's books constitute a complete library of Vedic philosophy, religion,
+                    literature and culture.</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container text-center">
+            <p>Himesh Parmar - 1804639</p>
+        </div>
+    </footer>
+    
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="assets/js/grayscale.js"></script>
+    <script>
+        window.addEventListener('load', (event) => {
+            var title = findGetParameter('ti');
+            var description = findGetParameter('de');
+            var author = findGetParameter('au');
+            var aboutauthor = findGetParameter('ab');
+            var imageurl = findGetParameter('im');
+
+            document.getElementById('title').innerHTML = title;
+            document.getElementById('description').innerHTML = description;
+            document.getElementById('author').innerHTML = author;
+            document.getElementById('aboutauthor').innerHTML = aboutauthor;
+            document.getElementById('bookImage').src = imageurl;
+        });
+
+        function findGetParameter(parameterName) {
+            var result = null,
+                tmp = [];
+            location.search
+                .substr(1)
+                .split("&")
+                .forEach(function (item) {
+                tmp = item.split("=");
+                if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+                });
+            return result;
+        }
+    </script>
 </body>
 
 </html>

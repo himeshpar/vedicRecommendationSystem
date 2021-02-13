@@ -1,0 +1,33 @@
+.masthead {
+  display: table;
+  width: 100%;
+  height: auto;
+  padding: 200px 0;
+  text-align: center;
+  color: #fff;
+  background-color: #000;
+  background-size: cover;
+}
+
+#searchUsers .sort-dropdown {
+  position: absolute;
+  z-index: 1;
+  background: #eeeeee;
+  border-radius: 5px;
+  max-height: 400px;
+  overflow-y: hidden;
+  display: none;
+}
+
+#searchUsers .sort-dropdown .book-title-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0px 6px;
+  height: 36px;
+  color: #000;
+}
+

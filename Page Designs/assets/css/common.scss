@@ -1,0 +1,48 @@
+.content {
+    background-image: url('../img/intro-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding-top: 96px;
+
+    .container {
+        .intro-book {
+            .book-item {
+                padding-bottom: 35px;
+            }
+
+            .book-main {
+                display: flex;
+                justify-content: center;
+
+                .book-image {
+                    display: flex;
+                    justify-content: center;
+                    width: 33%;
+
+                    img {
+                        width: 50%;
+                        height: 100%;
+                    }
+                }
+
+                .book-description {
+                    width: 67%;
+
+                    .book-title {
+                        font-size: 32px;
+                    }
+                }
+            }
+        }
+
+        .intro-author {
+            .about-author {
+                padding-bottom: 20px;
+            }
+
+            .author-resume {
+                width: 60%;
+            }
+        }
+    }
+}

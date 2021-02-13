@@ -1,0 +1,51 @@
+.content {
+  background-image: url("../img/intro-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding-top: 96px;
+}
+
+.content .container .intro-book .book-item {
+  padding-bottom: 35px;
+}
+
+.content .container .intro-book .book-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.content .container .intro-book .book-main .book-image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 33%;
+}
+
+.content .container .intro-book .book-main .book-image img {
+  width: 50%;
+  height: 100%;
+}
+
+.content .container .intro-book .book-main .book-description {
+  width: 67%;
+}
+
+.content .container .intro-book .book-main .book-description .book-title {
+  font-size: 32px;
+}
+
+.content .container .intro-author .about-author {
+  padding-bottom: 20px;
+}
+
+.content .container .intro-author .author-resume {
+  width: 60%;
+}
+/*# sourceMappingURL=common.css.map */
