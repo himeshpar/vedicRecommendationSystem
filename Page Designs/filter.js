@@ -4,7 +4,7 @@ var bookAllLists = [];
 
 btnShow.addEventListener('click', () => {
   let checkbox = document.querySelector('input[type= "checkbox":checked');
-    // Get the checkbox
+  
     var checkBox = document.getElementById("formCheck-1");
     var checkBox2 = document.getElementById("formCheck-2");
     var checkBox3 = document.getElementById("formCheck-3");
@@ -16,7 +16,7 @@ btnShow.addEventListener('click', () => {
     var checkBox9 = document.getElementById("formCheck-9");
     var checkBox10 = document.getElementById("formCheck-10");
 })
-
+// filter books list
 function getCategoryBooks(categoryCode) {
   return queryFetch(` 
     query getBooks($tags :[String]) {
@@ -26,6 +26,8 @@ function getCategoryBooks(categoryCode) {
         books{author}
         books{aboutauthor}
     		books{imageurl}
+        books{readURL}
+        books{buyURL}
         }
       }
   `, { tags: categoryCode }).then(data => {
@@ -33,6 +35,7 @@ function getCategoryBooks(categoryCode) {
   })
 }
 
+// used for the search feature and bookpage
 function getAllCategoryBooks() {
   return queryFetch(` 
     query getBooks($tags :[String]) {
@@ -42,6 +45,8 @@ function getAllCategoryBooks() {
         books{author}
         books{aboutauthor}
     		books{imageurl}
+        books{readURL}
+        books{buyURL}
         }
       }
   `).then(data => {
@@ -51,7 +56,9 @@ function getAllCategoryBooks() {
 
 function getBookData(bookInfo) {
   var newURL = 'bookspage.html?ti=' + bookInfo.title + '&de=' + bookInfo.description + '&au=' + bookInfo.author +
-               '&ab=' + bookInfo.aboutauthor + '&im=' + bookInfo.imageurl;
+               '&ab=' + bookInfo.aboutauthor + '&im=' + bookInfo.imageurl + '&ru=' + bookInfo.readURL + "&bu=" + bookInfo.buyURL;
+               buyURL = bookInfo.buyURL
+               readURL = bookInfo.readURL
   window.open(newURL);
 }
 
@@ -133,24 +140,6 @@ bookList.innerHTML = '';
     i++;
     
   }
-// displays the book title
-  // categories.forEach(e => console.log(e));
-  // console.log(getCategoryBooks(categories)); 
-  // var books = await getCategoryBooks(categories);
-  // console.log(Promise.resolve(books));
-  // var j;
-  // var titles = [];
-  // for (j = 0; j < books.length; j++)
-  //  {
-  //   console.log(books[j].id);
-  //   var i;
-  //   for (i = 0; i < books[j].id.length; i++){
-  //     if (titles.indexOf(books[j].id[i].title) == -1) 
-  //     { 
-  //     const element = document.createElement('div')
-  //     element.innerText = books[j].id[i].title
-  //     bookList.append(element) 
-  //     titles.push(books[j].id[i].title);
 
   categories.forEach(e => console.log(e));
   console.log(getCategoryBooks(categories)); 
@@ -162,10 +151,12 @@ bookList.innerHTML = '';
 function displayBookData(books) {
   const bookList = document.getElementById('books-list');
   bookLists = books;
-
+  var titles = [];
   for (let tagIndex = 0; tagIndex < bookLists.length; tagIndex++) {
     var tagList = bookLists[tagIndex].books;
     for (let bookIndex = 0; bookIndex < tagList.length; bookIndex++) {
+      if (titles.indexOf(tagList[bookIndex].title) == -1) {
+        titles.push(tagList[bookIndex].title);
       const element = document.createElement('a');
       const link = document.createElement("img");
       element.setAttribute("href", tagList[bookIndex].imageurl);
@@ -179,6 +170,7 @@ function displayBookData(books) {
       title.innerText = tagList[bookIndex].title;
       bookList.append(element);
       bookList.append(title);
+    }
     }
   }
 }
@@ -194,7 +186,7 @@ function queryFetch(query, variables){
   }).then(res => res.json())
 }
 
-
+// code for searching for books and displaying book info onto seperate page
 function searchBook() {
   var searchValue = document.getElementById("searchBook").value.toLowerCase();
   var is_item = false;
@@ -212,7 +204,7 @@ function searchBook() {
         is_item = true;
         const element = document.createElement('a');
         element.className = 'book-title-item';
-        var newURL = 'bookspage.html?ti=' + tagList[bookIndex].title + '&de=' + tagList[bookIndex].description + '&au=' + tagList[bookIndex].author + '&ab=' + tagList[bookIndex].aboutauthor + '&im=' + tagList[bookIndex].imageurl;
+        var newURL = 'bookspage.html?ti=' + tagList[bookIndex].title + '&de=' + tagList[bookIndex].description + '&au=' + tagList[bookIndex].author + '&ab=' + tagList[bookIndex].aboutauthor + '&im=' + tagList[bookIndex].imageurl + '&ru=' + tagList[bookIndex].readURL + "&bu=" + tagList[bookIndex].buyURL;
         element.setAttribute("href", newURL);
         element.innerText = tagList[bookIndex].title.slice(0, 15);
         element.setAttribute('target', '_blank');
@@ -233,5 +225,15 @@ function searchBook() {
 
 async function onLoadFunc() {
   bookAllLists = await getAllCategoryBooks();
-} 
+}
+
+function amazon() {
+  window.open(buyURL,'_blank');
+
+}
+
+function vedaBase() {
+  window.open(readURL,'_blank');
+
+}
 
