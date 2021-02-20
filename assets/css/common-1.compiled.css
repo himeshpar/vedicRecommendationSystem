@@ -1,0 +1,34 @@
+.content {
+  background-image: url("../img/intro-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding-top: 96px;
+}
+.content .container .intro-book .book-item {
+  padding-bottom: 35px;
+}
+.content .container .intro-book .book-main {
+  display: flex;
+  justify-content: center;
+}
+.content .container .intro-book .book-main .book-image {
+  display: flex;
+  justify-content: center;
+  width: 33%;
+}
+.content .container .intro-book .book-main .book-image img {
+  width: 50%;
+  height: 100%;
+}
+.content .container .intro-book .book-main .book-description {
+  width: 67%;
+}
+.content .container .intro-book .book-main .book-description .book-title {
+  font-size: 32px;
+}
+.content .container .intro-author .about-author {
+  padding-bottom: 20px;
+}
+.content .container .intro-author .author-resume {
+  width: 60%;
+}
