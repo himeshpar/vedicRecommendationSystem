@@ -1,0 +1,24 @@
+{
+  "name": "VedaSystem",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/himeshpar/vedicRecommendationSystem.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/himeshpar/vedicRecommendationSystem/issues"
+  },
+  "homepage": "https://github.com/himeshpar/vedicRecommendationSystem#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  },
+  "dependencies": {},
+  "description": ""
+}
